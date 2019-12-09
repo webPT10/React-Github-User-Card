@@ -16,11 +16,11 @@ class CardComponent extends Component {
           .then(result => {
             console.log('1st', result);
             this.setState({user: result.data});
-            return axios.get(this.state.user.followers_url)
+            return axios.get(this.state.user.following_url)
           })
         //   .then(result => {
         //     console.log('2nd', result);
-        //     this.setState({user: this.state.user, followers: result.data})
+        //     this.setState({user: this.state.user, following: result.data})
         //     console.log(this.state)
         //   })
           .catch(error => {
@@ -33,7 +33,7 @@ class CardComponent extends Component {
           return (
               <>
               <div>
-                  {this.state.avatar_url}
+                  <img src = {this.state.user.avatar_url} />
                   <p>Name: {this.state.user.name}</p>
                   <p>About: {this.state.user.bio}</p>
                   <p>Location: {this.state.user.location}</p>
