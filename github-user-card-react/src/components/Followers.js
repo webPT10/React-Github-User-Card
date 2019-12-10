@@ -2,38 +2,37 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-import CardComponent from './CardComponent';
-
 class Followers extends Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
-            followers: props.followers
+            following: []
         }
     }
 
     componentDidMount(){
         axios  
-            .get(`https://api.github.com/users/${this.state.followers.login}`)
+            .get(`https://api.github.com/users/erferguson/following`)
             .then(result => {
-                this.setState({user: result.data});
-                return axios.get(this.state.user.followers_url)
+                console.log('CDM', result.data)
+                this.setState({following: result.data});
             })
-            // .then(result => {
-            //     this.setState({user: this.state.user, followers: result.data})
-            // })
             .catch(error => {
                 console.log(`Error, oh to error: ${error}`)
             })
     }
 
     render(){
-        {console.log('Render', this.state)}
+        const { following } = this.state;
+        console.log('Render', this.state)
         return (
             <>
-                {this.state.followers.map(follower => {
-                    {console.log(follower)}
-                    return <CardComponent user={follower}/>
+                <h4>Sequor Autem Populus:</h4>
+                {following.map(followed => {
+                    {console.log(followed)}
+                    return (
+                    <p>{followed.login}</p>
+                    )
                 })}
             </>
         )
