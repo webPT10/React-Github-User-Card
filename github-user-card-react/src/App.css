@@ -1,0 +1,20 @@
+img {
+    max-width: 250px;
+    max-height: 250px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+h1 {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    color: crimson;
+}
+.user-card {
+    border: 2px dashed crimson;
+    max-width: 900px;
+}
+.card-content {
+    background: crimson;
+}

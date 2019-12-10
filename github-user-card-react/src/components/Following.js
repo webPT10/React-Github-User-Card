@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-class Followers extends Component {
+class Following extends Component {
     constructor(){
         super();
         this.state = {
@@ -31,12 +31,15 @@ class Followers extends Component {
                 {following.map(followed => {
                     {console.log(followed)}
                     return (
-                    <p>{followed.login}</p>
+                    <>
+                        <img src={followed.avatar_url} />
+                        <p>{followed.login}</p>
+                    </>
                     )
                 })}
             </>
         )
     } 
 }
-export default Followers;
+export default Following;
     
